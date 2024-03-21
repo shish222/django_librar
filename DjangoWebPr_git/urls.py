@@ -20,7 +20,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from app_main_menu.views import *
+from app_add_book.views import about
+from app_main_menu.views import index
 
 urlpatterns = [
     # Uncomment the next line to enable the admin:

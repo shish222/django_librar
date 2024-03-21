@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    "app_main_menu"
+    "app_main_menu",
+    "app_add_book",
 ]
 
 # Middleware framework
