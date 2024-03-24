@@ -1,7 +1,6 @@
 import uuid
 
-from django.shortcuts import redirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .forms import UploadFileForm
 from .models import *
@@ -30,8 +29,8 @@ def about(request):
             print(form.cleaned_data)
             # aut = author(name=form.cleaned_data["name_author"], surname=form.cleaned_data["surname"])
             # aut.save()
-            aut = author.objects.create(name=form.cleaned_data["name_author"], surname=form.cleaned_data["surname"])
-            bk = book(name=form.cleaned_data["name_book"], file=file_path)
+            aut = Admin.objects.create(name=form.cleaned_data["name_author"], surname=form.cleaned_data["surname"])
+            bk = Book(name=form.cleaned_data["name_book"], file=file_path)
             bk.save()
             bk.auth.add(aut)
             return redirect('/home')

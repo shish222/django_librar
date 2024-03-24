@@ -40,6 +40,9 @@ INSTALLED_APPS = [
 
     "app_main_menu",
     "app_add_book",
+    "app_registration",
+    "app_authen",
+
 ]
 
 # Middleware framework

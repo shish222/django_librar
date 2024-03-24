@@ -8,9 +8,10 @@
 <header>
     <div class="menu">
         <ul>
-            <li><a href="/ab">Добавить книгу</a></li>
-            <li><a href="/admin">авторизация</a></li>
-            <li><a href="/admin">Регистрация</a></li>
+            {% if req.user.is_authenticated %}
+            <li><a href="/authen">авторизация</a></li>
+            <li><a href="/reg">Регистрация</a></li>
+            {% endif %}
         </ul>
     </div>
 </header>
