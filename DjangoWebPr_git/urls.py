@@ -23,6 +23,7 @@ from django.urls import path
 from app_add_book.views import about
 from app_authen.views import authen_view, logout_view
 from app_main_menu.views import index
+from app_personal_account.views import pers_acc_view
 from app_registration.views import registration_view
 
 urlpatterns = [
@@ -32,5 +33,6 @@ urlpatterns = [
     path("", index),
     path("reg/", registration_view),
     path("authen/", authen_view),
-    path("logout", logout_view)
+    path("logout", logout_view),
+    path("personal_account/", pers_acc_view),
 ]

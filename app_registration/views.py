@@ -11,9 +11,9 @@ def registration_view(req):
         form = RegistrationForm(req.POST, req.FILES)
         if form.is_valid():
             data = form.cleaned_data
-            user = User.objects.create_user(password=data["password"], username=data["full_name"]).save()
+            user = User.objects.create_user(password=data["password"], username=data["full_name"])
+            user.save()
             login(req, user)
-            print(req.user.username)
             return redirect("/")
     else:
         form = RegistrationForm

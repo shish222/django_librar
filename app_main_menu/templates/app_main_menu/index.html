@@ -9,6 +9,9 @@
     <div class="menu">
         <ul>
             {% if req.user.is_authenticated %}
+            <li><a href="/personal_account/">Личный кабинет</a></li>
+            <li><a href="/logout">Выйти</a></li>
+            {% elif not req.user.is_authenticated %}
             <li><a href="/authen">авторизация</a></li>
             <li><a href="/reg">Регистрация</a></li>
             {% endif %}
