@@ -18,68 +18,22 @@
         </ul>
     </div>
 </header>
-<div class="text"><h1>ww</h1>
-    <h1>ww</h1>
-    <h1>ww</h1>
-    <h1>ww</h1>
-    <h1>ww</h1>
-    <h1>ww</h1>
-    <h1>ww</h1>
-    <h1>ww</h1>
-    <h1>ww</h1>
-    <h1>ww</h1>
-    <h1>ww</h1>
-    <h1>ww</h1>
-    <h1>ww</h1>
-    <h1>ww</h1>
-    <h1>ww</h1>
-    <h1>ww</h1>
-    <h1>ww</h1>
-    <h1>ww</h1>
-    <h1>ww</h1>
-    <h1>ww</h1>
-    <h5>dsabfsdofgnosdn
+<div class="text">
+    {% for e in page %}
+    <a href="book/{{e.name}}" style="color:black;" class="book_a">
+        <p>{{ e.name }}</p>
+        {% for auth in e.auth.all %}
+        <p>{{ auth.name }} {{auth.surname}}</p>
+        {% endfor %}
+    </a>
+    {% endfor %}
 
-
-        sdfs
-        df
-        sdf
-        sdf
-        sd
-        fsd
-        f
-        sdf
-        sd
-        f
-        sdf
-        sd
-        fsd
-        f
-        sdf
-        sd
-        fsd
-        f
-        sd
-        fs
-        fs
-        df
-        sdf
-        sd
-        fsd
-        f
-        sf
-        sd
-        fsd
-        f
-        sdf
-        s
-        df
-        sdf
-        s
-        df
-        s
-        df</h5>
-    <h1>ww</h1>
+    {% if page.has_previous %}
+    <a href="?page={{ page.previous_page_number }}">Назад</a>
+    {% endif %}
+    {% if page.has_next %}
+    <a href="?page={{ page.next_page_number }}">Вперед</a>
+    {% endif %}
 </div>
 </body>
 </html>

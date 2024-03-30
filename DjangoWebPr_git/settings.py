@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'DjangoWebPr_git.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dj_DB',
+        'NAME': 'dj_db',
         'USER': 'rsh',
         'PASSWORD': '18003002',
         'HOST': '127.0.0.1',

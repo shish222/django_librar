@@ -14,3 +14,6 @@ class Book(models.Model):
     auth = models.ManyToManyField(Admin)
     file = models.FileField()
     price = models.IntegerField()
+
+    # def __str__(self):
+    #     return self.name,self.id

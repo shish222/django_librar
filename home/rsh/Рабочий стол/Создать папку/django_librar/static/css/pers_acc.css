@@ -1,0 +1,38 @@
+header {
+  background-color:#adacac;
+  position: fixed;
+  top:0;
+  right:0;
+  padding-right:6%;
+  padding-left:100%;
+}
+
+
+.menu ul {
+  display: flex;
+  font-size: 16px;
+  line-height: 18px;
+  list-style: none;
+}
+
+
+.menu a {
+  color: #000;
+  text-decoration: none;
+  display: block;
+  padding: 7px 6px;
+  text-transform: uppercase;
+  letter-spacing: .27em;
+  font-size:20px;
+}
+a:hover {
+transition: background-color 0.5s;
+background-color: #33FF99;
+}
+.text {
+padding-top: 5%;
+}
+.menu li{
+padding-right:5%;
+}
+
