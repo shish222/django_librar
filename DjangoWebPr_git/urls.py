@@ -23,9 +23,9 @@ from django.urls import path
 from app_add_book.views import about
 from app_authen.views import authen_view, logout_view
 from app_main_menu.views import index
-from app_personal_account.views import pers_acc_view
+from app_my_book.views import my_book_view
 from app_registration.views import registration_view
-
+from app_book_view.views import book_view
 urlpatterns = [
     # Uncomment the next line to enable the admin:
     path('admin/', admin.site.urls),
@@ -34,5 +34,6 @@ urlpatterns = [
     path("reg/", registration_view),
     path("authen/", authen_view),
     path("logout", logout_view),
-    path("personal_account/", pers_acc_view),
+    path("my_book/", my_book_view),
+    path("book/<str:name>/", book_view)
 ]

@@ -27,13 +27,13 @@ def about(request):
         if form.is_valid():
             file_path = handle_uploaded_file(form.cleaned_data['file'])
             print(form.cleaned_data)
-            # aut = author(name=form.cleaned_data["name_author"], surname=form.cleaned_data["surname"])
-            # aut.save()
-            aut = Admin.objects.create(name=form.cleaned_data["name_author"], surname=form.cleaned_data["surname"])
-            bk = Book(name=form.cleaned_data["name_book"], file=file_path)
+            aut = Admin(name=form.cleaned_data["name_author"], surname=form.cleaned_data["surname"])
+            aut.save()
+            # aut = Admin.objects.create(name=form.cleaned_data["name_author"], surname=form.cleaned_data["surname"])
+            bk = Book(name=form.cleaned_data["name_book"], file=file_path, price=form.cleaned_data["price"])
             bk.save()
             bk.auth.add(aut)
-            return redirect('/home')
+            return redirect('/')
     else:
         form = UploadFileForm()
 

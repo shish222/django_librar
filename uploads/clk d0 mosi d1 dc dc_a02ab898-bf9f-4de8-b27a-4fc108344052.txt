@@ -1,0 +1,4 @@
+ clk=d0
+ mosi=d1
+ dc=dc
+ cs=cs

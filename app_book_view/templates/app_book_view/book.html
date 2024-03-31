@@ -1,9 +1,10 @@
 {% load static %}
-<html>
-<head><title>Home</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{name}}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/book.css' %}">
 </head>
-
 <body>
 <header>
     <div class="menu">
@@ -21,21 +22,8 @@
     </div>
 </header>
 <div class="text">
-    {% for e in page %}
-    <a href="book/{{e.name}}" style="color:black;" class="book_a">
-        <p>{{ e.name }}</p>
-        {% for auth in e.auth.all %}
-        <p>{{ auth.name }} {{auth.surname}}</p>
-        {% endfor %}
-    </a>
-    {% endfor %}
-
-    {% if page.has_previous %}
-    <a href="?page={{ page.previous_page_number }}">Назад</a>
-    {% endif %}
-    {% if page.has_next %}
-    <a href="?page={{ page.next_page_number }}">Вперед</a>
-    {% endif %}
+    <h1 align="center">{{name}}</h1>
+    <p>{{text}}</p>
 </div>
 </body>
 </html>

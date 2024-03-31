@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     "app_add_book",
     "app_registration",
     "app_authen",
-    "app_personal_account",
+    "app_my_book",
+    "app_book_view",
 
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
