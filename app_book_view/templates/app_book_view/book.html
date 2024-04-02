@@ -23,7 +23,9 @@
 </header>
 <div class="text">
     <h1 align="center">{{name}}</h1>
-    <p>{{text}}</p>
+    {% for i in text %}
+    <p>{{i}}</p>
+    {% endfor %}
 </div>
 </body>
 </html>

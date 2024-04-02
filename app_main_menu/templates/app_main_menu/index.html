@@ -23,6 +23,7 @@
 <div class="text">
     {% for e in page %}
     <a href="book/{{e.name}}" style="color:black;" class="book_a">
+        <img src="{{e.file_img.path}}">
         <p>{{ e.name }}</p>
         {% for auth in e.auth.all %}
         <p>{{ auth.name }} {{auth.surname}}</p>

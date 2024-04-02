@@ -6,7 +6,7 @@ from .forms import UploadFileForm
 from .models import *
 
 
-def handle_uploaded_file(f):
+def handle_uploaded_file_text(f):
     name = f.name
     ext = ''
 
@@ -21,16 +21,33 @@ def handle_uploaded_file(f):
     return f"uploads/{name}_{suffix}{ext}"
 
 
+def handle_uploaded_file_img(f):
+    name = f.name
+    ext = ''
+
+    if '.' in name:
+        ext = name[name.rindex('.'):]
+        name = name[:name.rindex('.')]
+
+    suffix = str(uuid.uuid4())
+    with open(f"img/{name}_{suffix}{ext}", "wb+") as destination:
+        for chunk in f.chunks():
+            destination.write(chunk)
+    return f"img/{name}_{suffix}{ext}"
+
+
 def about(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
-            file_path = handle_uploaded_file(form.cleaned_data['file'])
+            file_text_path = handle_uploaded_file_text(form.cleaned_data['file_text'])
+            file_img_path = handle_uploaded_file_img(form.cleaned_data['file_img'])
             print(form.cleaned_data)
             aut = Admin(name=form.cleaned_data["name_author"], surname=form.cleaned_data["surname"])
             aut.save()
             # aut = Admin.objects.create(name=form.cleaned_data["name_author"], surname=form.cleaned_data["surname"])
-            bk = Book(name=form.cleaned_data["name_book"], file=file_path, price=form.cleaned_data["price"])
+            bk = Book(name=form.cleaned_data["name_book"], file_text=file_text_path, file_img=file_img_path,
+                      price=form.cleaned_data["price"])
             bk.save()
             bk.auth.add(aut)
             return redirect('/')
