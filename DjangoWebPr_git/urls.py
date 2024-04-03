@@ -17,15 +17,19 @@ Including another URLconf
 """
 
 # Uncomment next two lines to enable admin:
+
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 
 from app_add_book.views import about
 from app_authen.views import authen_view, logout_view
+from app_book_view.views import book_view
 from app_main_menu.views import index
 from app_my_book.views import my_book_view
 from app_registration.views import registration_view
-from app_book_view.views import book_view
+
 urlpatterns = [
     # Uncomment the next line to enable the admin:
     path('admin/', admin.site.urls),
@@ -37,3 +41,5 @@ urlpatterns = [
     path("my_book/", my_book_view),
     path("book/<str:name>/", book_view)
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -29,8 +29,12 @@ header {
 }
 .book_a{
 background-color: #adacac;
+display:flex;
 }
-
+.img_b {
+padding-top: 2px;
+padding-right:5px;
+}
 a:hover {
 transition: background-color 0.5s;
 background-color: #33FF99;

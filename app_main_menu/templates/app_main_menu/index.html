@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 {% load static %}
 <html>
 <head><title>Home</title>
@@ -23,11 +24,13 @@
 <div class="text">
     {% for e in page %}
     <a href="book/{{e.name}}" style="color:black;" class="book_a">
-        <img src="{{e.file_img.path}}">
-        <p>{{ e.name }}</p>
-        {% for auth in e.auth.all %}
-        <p>{{ auth.name }} {{auth.surname}}</p>
-        {% endfor %}
+        <img src="{{ MEDIA_URL }}{{e.file_img.name}}" width="80" height="80" class="img_b">
+        <div class="q1">
+            <p>{{ e.name }}</p>
+            {% for auth in e.created_book.all %}
+            <p>{{ auth.name }}</p>
+            {% endfor %}
+        </div>
     </a>
     {% endfor %}
 

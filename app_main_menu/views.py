@@ -11,8 +11,8 @@ def index(req):
     if not page_n:
         page_n = 1
     page_obj = paginator.get_page(page_n)
-    for i in page_obj:
-        print(i.file_img.path)
+    # for i in page_obj:
+    #     print(i.file_img.name)
     context = {
         "req": req,
         "page": page_obj
