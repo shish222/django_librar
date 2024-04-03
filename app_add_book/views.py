@@ -37,19 +37,25 @@ def handle_uploaded_file_img(f):
 
 
 def about(request):
+    print(dir(request.user.profile))
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
             file_text_path = handle_uploaded_file_text(form.cleaned_data['file_text'])
             file_img_path = handle_uploaded_file_img(form.cleaned_data['file_img'])
             print(form.cleaned_data)
-            aut = Admin(name=form.cleaned_data["name_author"], surname=form.cleaned_data["surname"])
-            aut.save()
-            # aut = Admin.objects.create(name=form.cleaned_data["name_author"], surname=form.cleaned_data["surname"])
-            bk = Book(name=form.cleaned_data["name_book"], file_text=file_text_path, file_img=file_img_path,
-                      price=form.cleaned_data["price"])
-            bk.save()
-            bk.auth.add(aut)
+            # aut = Admin(name=form.cleaned_data["name_author"], surname=form.cleaned_data["surname"])
+            # aut.save()
+            # # aut = Admin.objects.create(name=form.cleaned_data["name_author"], surname=form.cleaned_data["surname"])
+            # bk = Book(name=form.cleaned_data["name_book"], file_text=file_text_path, file_img=file_img_path,
+            #           price=form.cleaned_data["price"])
+            # bk.save()
+            book = Book(name=form.cleaned_data["name_book"], file_text=file_text_path, file_img=file_img_path,
+                        price=form.cleaned_data["price"], genre=form.cleaned_data["genre"],
+                        release_date=form.cleaned_data["release_date"])
+            book.save()
+            user = request.user.profile
+            user.created_book.add(book)
             return redirect('/')
     else:
         form = UploadFileForm()
