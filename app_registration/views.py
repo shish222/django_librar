@@ -17,7 +17,7 @@ def handle_uploaded_file_img(f):
         name = name[:name.rindex('.')]
 
     suffix = str(uuid.uuid4())
-    with open(f"img_pr/{name}_{suffix}{ext}", "wb+") as destination:
+    with open(f"media/img_pr/{name}_{suffix}{ext}", "wb+") as destination:
         for chunk in f.chunks():
             destination.write(chunk)
     return f"img_pr/{name}_{suffix}{ext}"

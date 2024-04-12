@@ -30,6 +30,7 @@ header {
 .book_a{
 background-color: #adacac;
 display:flex;
+width: 80%;
 }
 .img_b {
 padding-top: 2px;

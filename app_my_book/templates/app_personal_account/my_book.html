@@ -1,31 +1,14 @@
 {% load static %}
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <title>Личный кабинет</title>-->
-<!--    <link rel="stylesheet" type="text/css" href="{% static 'css/my_book.css' %}">-->
-<!--</head>-->
-<!--<body>-->
-<!--<header>-->
-<!--    <div class="menu">-->
-<!--        <ul>-->
-<!--            <li><a href="/logout">Выйти из аккаунта</a></li>-->
-<!--            <li><a href="/"><img src="{%static 'img/logo.png'%}" width="40" height="40"></a></li>-->
-<!--        </ul>-->
-<!--    </div>-->
-<!--</header>-->
-<!--</body>-->
-<!--</html>-->
 <html lang="en">
 <head>
     <title>Личный кабинет</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/my_book.css' %}">
-    <script type="text/javascript" src="{% static 'js/my_book.js' %}"></script>
 </head>
 <body>
 <div class="container">
     <div class="profile-header">
         <div class="profile-img">
-            <!--      <img src="./bg.jpg" width="200" alt="Profile Image">-->
+            <img src="{{MEDIA_URL}}{{profile.img}}" width="200" alt="Profile Image">
         </div>
         <div class="profile-nav-info">
             <h3 class="user-name">Bright Code</h3>
@@ -79,7 +62,7 @@
             <div class="nav">
                 <ul>
                     <li onclick="tabs(0)" class="user-post active">Books</li>
-                    <li onclick="tabs(2)" class="user-setting"> Settings</li>
+                    <li onclick="tabs(1)" class="user-setting"> Settings</li>
                 </ul>
             </div>
             <div class="profile-body">
@@ -110,4 +93,6 @@
     </div>
 </div>
 </body>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'js/my_book.js' %}"></script>
 </html>
