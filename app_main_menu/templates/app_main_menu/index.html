@@ -22,24 +22,30 @@
     </div>
 </header>
 <div class="text">
-    {% for e in page %}
-    <a href="book/{{e.name}}" style="color:black;" class="book_a">
-        <img src="{{ MEDIA_URL }}{{e.file_img.name}}" width="80" height="80" class="img_b">
-        <div class="q1">
-            <p>{{ e.name }}</p>
-            {% for auth in e.created_book.all %}
-            <p>{{ auth.name }}</p>
-            {% endfor %}
-        </div>
-    </a>
-    {% endfor %}
-
-    {% if page.has_previous %}
-    <a href="?page={{ page.previous_page_number }}">Назад</a>
-    {% endif %}
-    {% if page.has_next %}
-    <a href="?page={{ page.next_page_number }}">Вперед</a>
-    {% endif %}
+    <form method="POST" style="width:192px;float:right;display:block;">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Применить">
+    </form>
+    <div>
+        {% for e in page %}
+        <a href="book/{{e.name}}" style="color:black;" class="book_a">
+            <img src="{{ MEDIA_URL }}{{e.file_img.name}}" width="80" height="80" class="img_b">
+            <div class="q1">
+                <p>{{ e.name }}</p>
+                {% for auth in e.created_book.all %}
+                <p>{{ auth.name }}</p>
+                {% endfor %}
+            </div>
+        </a>
+        {% endfor %}
+        {% if page.has_previous %}
+        <a href="?page={{ page.previous_page_number }}">Назад</a>
+        {% endif %}
+        {% if page.has_next %}
+        <a href="?page={{ page.next_page_number }}">Вперед</a>
+        {% endif %}
+    </div>
 </div>
 </body>
 </html>

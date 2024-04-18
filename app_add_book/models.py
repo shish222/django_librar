@@ -26,3 +26,4 @@ class Profile(models.Model):
     created_book = models.ManyToManyField(Book, related_name="created_book")
     my_book = models.ManyToManyField(Book, related_name="my_book")
     balance = models.IntegerField(default=10)
+    bio = models.CharField(max_length=200)

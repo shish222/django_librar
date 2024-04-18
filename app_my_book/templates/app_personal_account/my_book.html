@@ -11,11 +11,7 @@
             <img src="{{MEDIA_URL}}{{profile.img}}" width="200" alt="Profile Image">
         </div>
         <div class="profile-nav-info">
-            <h3 class="user-name">Bright Code</h3>
-            <div class="address">
-                <p id="state" class="state">New York,</p>
-                <span id="country" class="country">USA.</span>
-            </div>
+            <h3 class="user-name">{{profile.name}}</h3>
 
         </div>
         <div class="profile-option">
@@ -25,37 +21,18 @@
             </div>
         </div>
     </div>
-
     <div class="main-bd">
         <div class="left-side">
             <div class="profile-side">
-                <p class="mobile-no"><i class="fa fa-phone"></i> +23470xxxxx700</p>
-                <p class="user-mail"><i class="fa fa-envelope"></i> Brightisaac80@gmail.com</p>
                 <div class="user-bio">
-                    <h3>Bio</h3>
+                    <h3>Биография</h3>
                     <p class="bio">
-                        Lorem ipsum dolor sit amet, hello how consectetur adipisicing elit. Sint consectetur provident
-                        magni yohoho consequuntur, voluptatibus ghdfff exercitationem at quis similique. Optio, amet!
+                        {%for i in bio_l%}
+                        {{i}}
+                        {%endfor%}
                     </p>
                 </div>
-                <div class="user-rating">
-                    <h3 class="rating">4.5</h3>
-                    <div class="rate">
-                        <div class="star-outer">
-                            <div class="star-inner">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                        </div>
-                        <span class="no-of-user-rate"><span>123</span>&nbsp;&nbsp;reviews</span>
-                    </div>
-
-                </div>
             </div>
-
         </div>
         <div class="right-side">
 
@@ -78,14 +55,14 @@
                 </div>
                 <div class="profile-settings tab">
                     <div class="account-setting">
-                        <h1>Acount Setting</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit omnis eaque, expedita
-                            nostrum, facere libero provident laudantium. Quis, hic doloribus! Laboriosam nemo tempora
-                            praesentium. Culpa quo velit omnis, debitis maxime, sequi
-                            animi dolores commodi odio placeat, magnam, cupiditate facilis impedit veniam? Soluta
-                            aliquam excepturi illum natus adipisci ipsum quo, voluptatem, nemo, commodi, molestiae
-                            doloribus magni et. Cum, saepe enim quam voluptatum vel debitis
-                            nihil, recusandae, omnis officiis tenetur, ullam rerum.</p>
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div>
+                                <p>Биография </p>
+                                <textarea name="bio" style="height:150px;width:300px;">{{bio}}</textarea>
+                            </div>
+                            <input type="submit" value="Изменить">
+                        </form>
                     </div>
                 </div>
             </div>

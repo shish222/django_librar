@@ -32,7 +32,7 @@ def registration_view(req):
             img_path = handle_uploaded_file_img(data["img"])
             user = User.objects.create_user(password=data["password"], username=data["full_name"])
             user.save()
-            profile = Profile(user=user, name=data["full_name"], img=img_path)
+            profile = Profile(user=user, name=data["full_name"], img=img_path, bio=data["bio"])
             profile.save()
 
             login(req, user)
