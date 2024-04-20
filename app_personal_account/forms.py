@@ -2,6 +2,10 @@ from django import forms
 from app_add_book.models import Book
 
 
+class BalanceForm(forms.Form):
+    incr = forms.IntegerField(label="Сумма для пополнения")
+
+
 class FilterForm(forms.Form):
     name = forms.CharField(label="Название")
     book_list = Book.objects.all()

@@ -27,15 +27,31 @@ header {
   letter-spacing: .27em;
 
 }
+.book_a{
+background-color: #adacac;
+display:flex;
+width: 80%;
+}
+.img_b {
+padding-top: 2px;
+padding-right:5px;
+}
 a:hover {
 transition: background-color 0.5s;
 background-color: #33FF99;
 }
 .text {
-padding-top: 5%;
+padding-top: 60px;
 }
 .menu li{
 padding-right:5%;
+}
+.book_a {
+text-decoration:none;
+float: left;
+padding:0px 10px 0px 10px;
+border: 2px solid black;
+background:white;
 }
 
 @import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
@@ -408,4 +424,7 @@ button.createbtn i {
   display: flex;
   justify-content: center;
   margin: 20px auto;
+}
+.right-side {
+width:808px;
 }

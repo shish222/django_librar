@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     "app_add_book",
     "app_registration",
     "app_authen",
-    "app_my_book",
+    "app_personal_account",
     "app_book_view",
 
 ]

@@ -27,7 +27,7 @@ from app_add_book.views import about
 from app_authen.views import authen_view, logout_view
 from app_book_view.views import book_view
 from app_main_menu.views import index
-from app_my_book.views import my_book_view
+from app_personal_account.views import my_book_view, author_add, add_balance
 from app_registration.views import registration_view
 
 urlpatterns = [
@@ -38,8 +38,11 @@ urlpatterns = [
     path("reg/", registration_view),
     path("authen/", authen_view),
     path("logout", logout_view),
-    path("my_book/", my_book_view),
-    path("book/<str:name>/", book_view)
+    path("personal_account/", my_book_view),
+    path("book/<str:name>/", book_view),
+    path("<str:name>/author_add", author_add),
+    path("<str:name>/add_balance/", add_balance),
+    path("<str:name>/<str:name1>/add_balance/", add_balance)
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

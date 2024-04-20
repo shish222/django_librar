@@ -1,0 +1,114 @@
+{% load static %}
+<html lang="en">
+<head>
+    <title>Личный кабинет</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/my_book.css' %}">
+</head>
+<body>
+<div class="container">
+    <div class="profile-header">
+        <div class="profile-img">
+            <img src="{{MEDIA_URL}}{{profile.img}}" width="200" alt="Profile Image">
+        </div>
+        <div class="profile-nav-info">
+            <h3 class="user-name">{{profile.name}}</h3>
+            <h4>Ваш баланс:{{profile.balance}} рублей</h4>
+            <a href="./add_balance">Пополнить баланс</a>
+        </div>
+        <div class="profile-option">
+            <div class="notification">
+                <i class="fa fa-bell"></i>
+                <span class="alert-message">3</span>
+            </div>
+        </div>
+    </div>
+    <div class="main-bd">
+        <div class="left-side">
+            <div class="profile-side">
+                <div class="user-bio">
+                    <h3>Биография</h3>
+                    <p class="bio">
+                        {%for i in bio_l%}
+                        {{i}}
+                        {%endfor%}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="right-side">
+
+            <div class="nav">
+                <ul>
+                    <li onclick="tabs(0)" class="active">Созданные книги</li>
+                    <li onclick="tabs(1)" class="user-post">Купленные книги</li>
+                    <li onclick="tabs(2)" class="user-setting"> Настройки</li>
+                </ul>
+            </div>
+            <div class="profile-body">
+                <div class="tab">
+                    {%if profile.is_author%}
+                    <a href="/ab">Создать книгу</a>
+                    <div>
+                        {% for e in page_created %}
+                        <a href="/book/{{e.name}}" style="color:black;" class="book_a">
+                            <img src="{{ MEDIA_URL }}{{e.file_img.name}}" width="80" height="80" class="img_b">
+                            <div class="q1">
+                                <p>{{ e.name }}</p>
+                                {% for auth in e.created_book.all %}
+                                <p>{{ auth.name }}</p>
+                                {% endfor %}
+                            </div>
+                        </a>
+
+                        {% endfor %}
+                        {% if page.has_previous %}
+                        <a href="?page={{ page.previous_page_number }}">Назад</a>
+                        {% endif %}
+                        {% if page.has_next %}
+                        <a href="?page={{ page.next_page_number }}">Вперед</a>
+                        {% endif %}
+                        {%else%}
+                        <p>Вы не являетесь автором</p>
+                        <a href="./author_add">Купите права автора за 500 рублей.</a>
+                        {%endif%}
+                    </div>
+                </div>
+                <div class="tab">
+                    {% for e in page_my_b %}
+                    <a href="book/{{e.name}}" style="color:black;" class="book_a">
+                        <img src="{{ MEDIA_URL }}{{e.file_img.name}}" width="80" height="80" class="img_b">
+                        <div class="q1">
+                            <p>{{ e.name }}</p>
+                            {% for auth in e.created_book.all %}
+                            <p>{{ auth.name }}</p>
+                            {% endfor %}
+                        </div>
+                    </a>
+                    {% endfor %}
+                    {% if page.has_previous %}
+                    <a href="?page={{ page.previous_page_number }}">Назад</a>
+                    {% endif %}
+                    {% if page.has_next %}
+                    <a href="?page={{ page.next_page_number }}">Вперед</a>
+                    {% endif %}
+                </div>
+                <div class="tab">
+                    <div class="account-setting">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div>
+                                <p>Биография </p>
+                                <textarea name="bio" style="height:150px;width:300px;">{{bio}}</textarea>
+                            </div>
+                            <input type="submit" value="Изменить">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'js/my_book.js' %}"></script>
+</html>

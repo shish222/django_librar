@@ -10,7 +10,7 @@
     <div class="menu">
         <ul>
             {% if req.user.is_authenticated %}
-            <li><a href="/my_book?page=1">Личный кабинет</a></li>
+            <li><a href="/personal_account?page=1">Личный кабинет</a></li>
             <li><a href="/logout">Выйти</a></li>
             <li><a><img src="{%static 'img/logo.png'%}" width="40" height="40"></a></li>
             {% elif not req.user.is_authenticated %}
@@ -28,6 +28,7 @@
         <input type="submit" value="Применить">
     </form>
     <div>
+        <p>{{text}}</p>
         {% for e in page %}
         <a href="book/{{e.name}}" style="color:black;" class="book_a">
             <img src="{{ MEDIA_URL }}{{e.file_img.name}}" width="80" height="80" class="img_b">

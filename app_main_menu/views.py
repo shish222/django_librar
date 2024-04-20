@@ -18,10 +18,14 @@ def index(req):
     if not page_n:
         page_n = 1
     page_obj = paginator.get_page(page_n)
+    text = ""
+    if not page_obj:
+        text = "Книг не найдено"
     context = {
         "req": req,
         "page": page_obj,
-        "form": form
+        "form": form,
+        "text": text
     }
 
     return render(req, "app_main_menu/index.html", context)
